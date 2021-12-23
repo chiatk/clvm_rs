@@ -65,7 +65,8 @@ ios: target/universal/release/libexample.a
 
 target/universal/release/libexample.a: $(SOURCES) ndk-home
 	@if [ $$(uname) == "Darwin" ] ; then \
-		cargo lipo --release ; \
+		PYO3_CROSS_LIB_DIR=$(PYO3_APPLE_ARM) \
+			cargo lipo --release ; \
 		else echo "Skipping iOS compilation on $$(uname)" ; \
 	fi
 	@echo "[DONE] $@"
@@ -75,14 +76,16 @@ macos: target/x86_64-apple-darwin/release/libexample.dylib target/aarch64-apple-
 
 target/x86_64-apple-darwin/release/libexample.dylib: $(SOURCES)
 	@if [ $$(uname) == "Darwin" ] ; then \
-		cargo lipo --release --targets x86_64-apple-darwin ; \
+		PYO3_CROSS_LIB_DIR=$(PYO3_APPLE_ARM) \
+			cargo lipo --release --targets x86_64-apple-darwin ; \
 		else echo "Skipping macOS compilation on $$(uname)" ; \
 	fi
 	@echo "[DONE] $@"
 
 target/aarch64-apple-darwin/release/libexample.dylib: $(SOURCES)
 	@if [ $$(uname) == "Darwin" ] ; then \
-		cargo lipo --release --targets aarch64-apple-darwin ; \
+		PYO3_CROSS_LIB_DIR=$(PYO3_APPLE_ARM) \
+			cargo lipo --release --targets aarch64-apple-darwin ; \
 		else echo "Skipping macOS compilation on $$(uname)" ; \
 	fi
 	@echo "[DONE] $@"
