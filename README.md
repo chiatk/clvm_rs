@@ -84,20 +84,3 @@ cargo fuzz run fuzz_run_program --jobs=32 -- -rss_limit_mb=4096
 But with whatever number of jobs works best for you.
 
 If you find issues in `clvm_rs` please see the [Bug Bounty program](https://www.chia.net/2021/10/21/bugcrowd-bounty-launch.en.html).
-
-
-
-Compiling in MacOS
-
-enter to python CLI
-import sys
-sys.base_prefix
-
-then with the path, only add "/lib"
-for example
-/usr/local/opt/python@3.9/Frameworks/Python.framework/Versions/3.9/
-
-/usr/local/opt/python@3.9/Frameworks/Python.framework/Versions/3.9/lib
-
-
-export PYO3_CROSS_LIB_DIR="/usr/local/opt/python@3.9/Frameworks/Python.framework/Versions/3.9/lib"
