@@ -11,7 +11,8 @@ readme = "README.md"
 
 [lib]
 name = "clvm_rs"
-crate-type = ["cdylib", "rlib"]
+crate-type = ["cdylib", "rlib",  "staticlib", "cdylib"]
+ 
 
 [profile.release]
 lto = true
@@ -19,6 +20,7 @@ lto = true
 [features]
 extension-module = ["pyo3/extension-module"]
 default = ["extension-module"]
+
 
 [dependencies]
 hex = "=0.4.3"
